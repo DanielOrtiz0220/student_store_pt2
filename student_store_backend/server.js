@@ -5,8 +5,8 @@ const { PORT } = require("./config");
 const { NotFoundError } = require("./utils/errors");
 const authRoutes = require("./routes/auth");
 const storeRoutes = require("./routes/store");
-const orderRoutes = require("./routes/order");
-const security = require("./middleware/security");
+const orderRoutes = require("./routes/orders");
+const security = require("./middleware/security.js");
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.use(security.extractUserFromJwt);
 
 app.use("/auth", authRoutes);
 app.use("/store", storeRoutes);
-app.use("/order", orderRoutes);
+//app.use("/order", orderRoutes);
 
 /** Handle 404 errors -- this matches everything */
 app.use((req, res, next) => {
